@@ -1,0 +1,772 @@
+/* ========================= */
+/*        style.css          */
+/* ========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    background:
+    radial-gradient(circle at top,#1c1d45,#000);
+
+    overflow:hidden;
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-family:Georgia, serif;
+}
+
+
+/* CIELO */
+
+.sky{
+
+    position:fixed;
+
+    width:100%;
+
+    height:100%;
+
+    z-index:0;
+}
+
+
+.star{
+
+    position:absolute;
+
+    width:3px;
+
+    height:3px;
+
+    background:white;
+
+    border-radius:50%;
+
+    animation:blink 2s infinite;
+}
+
+
+@keyframes blink{
+
+    0%,100%{
+        opacity:0.2;
+    }
+
+    50%{
+        opacity:1;
+    }
+
+}
+
+
+/* COMETAS */
+
+.shooting-star{
+
+    position:fixed;
+
+    width:180px;
+
+    height:2px;
+
+    background:
+    linear-gradient(
+        to left,
+        rgba(255,255,255,1),
+        rgba(255,255,255,0)
+    );
+
+    border-radius:999px;
+
+    transform:rotate(-25deg);
+
+    opacity:0.9;
+
+    pointer-events:none;
+
+    box-shadow:
+    0 0 10px white;
+
+    animation:meteorRain 6s linear forwards;
+}
+
+
+@keyframes meteorRain{
+
+    from{
+
+        top:-10%;
+        right:-20%;
+    }
+
+    to{
+
+        top:60%;
+        right:120%;
+    }
+
+}
+
+
+/* PANTALLAS */
+
+.screen{
+
+    position:absolute;
+
+    width:100%;
+
+    max-width:400px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:1s ease;
+}
+
+
+.screen.active{
+
+    opacity:1;
+
+    pointer-events:auto;
+}
+
+
+/* LUNA */
+
+.moon-container{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    position:relative;
+
+    cursor:pointer;
+}
+
+
+.moon-img{
+
+    width:260px;
+
+    z-index:1;
+
+    filter:
+    drop-shadow(0 0 20px rgba(255,255,255,0.7));
+
+    animation:moonFloat 3s ease-in-out infinite;
+}
+
+
+@keyframes moonFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+
+}
+
+
+/* FRASE */
+
+.moon-phrase{
+
+    width:320px;
+
+    text-align:center;
+
+    margin-top:20px;
+
+    color:white;
+
+    line-height:1.5;
+
+    font-size:1rem;
+
+    text-shadow:
+    0 0 8px rgba(255,255,255,0.6),
+    0 0 18px rgba(255,255,255,0.4);
+
+    animation:moonFloat 3s ease-in-out infinite;
+}
+
+
+/* BANDERA */
+
+.flag-top{
+
+    position:absolute;
+
+    top:-35px;
+
+    z-index:10;
+
+    display:flex;
+
+    align-items:center;
+
+    animation:flagFloat 2s infinite;
+}
+
+
+.flag-top img{
+    width:50px;
+}
+
+
+.flag-top span{
+
+    color:white;
+
+    margin-left:8px;
+
+    font-weight:bold;
+}
+
+
+@keyframes flagFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+
+}
+
+
+/* CARTA */
+
+.card-wrapper{
+
+    position:relative;
+
+    width:320px;
+
+    margin-top:15px;
+
+    animation:cardAppear 1.2s ease;
+}
+
+
+.card-img{
+    width:100%;
+}
+
+
+@keyframes cardAppear{
+
+    from{
+        transform:scale(0.6);
+        opacity:0;
+    }
+
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+
+}
+
+
+/* TEXTO */
+
+.text-layer{
+
+    position:absolute;
+
+    top:11%;
+
+    left:15%;
+
+    width:70%;
+
+    height:62%;
+
+    overflow-y:auto;
+
+    padding-right:8px;
+
+    color:#3b201a;
+
+    scrollbar-width:thin;
+
+    scrollbar-color:#ff77b7 transparent;
+}
+
+
+.text-layer::-webkit-scrollbar{
+
+    width:6px;
+}
+
+
+.text-layer::-webkit-scrollbar-thumb{
+
+    background:#ff77b7;
+
+    border-radius:999px;
+}
+
+
+.text-layer h1{
+
+    text-align:center;
+
+    font-size:0.8rem;
+
+    line-height:1.4;
+
+    margin-bottom:10px;
+}
+
+
+.text-layer p{
+
+    font-size:0.67rem;
+
+    line-height:1.32;
+
+    margin-bottom:7px;
+
+    text-align:justify;
+
+    font-weight:600;
+}
+
+
+/* BOTON */
+
+#back-btn{
+
+    margin-top:15px;
+
+    margin-left:45px;
+
+    padding:8px 16px;
+
+    border:none;
+
+    border-radius:999px;
+
+    background:#ff77b7;
+
+    color:white;
+
+    font-size:0.78rem;
+
+    font-family:Georgia, serif;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    box-shadow:
+    0 0 12px rgba(255,119,183,0.5);
+}
+
+
+/* FLECHAS */
+
+.arrow-btn{
+
+    position:absolute;
+
+    top:15px;
+
+    left:10px;
+
+    width:42px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#ff77b7;
+
+    color:white;
+
+    font-size:1.3rem;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    z-index:20;
+
+    box-shadow:
+    0 0 12px rgba(255,119,183,0.5);
+}
+
+
+/* CONEJOS ABAJO */
+
+.bunny-row{
+
+    position:relative;
+
+    width:300px;
+
+    height:110px;
+
+    margin-top:5px;
+}
+
+
+.bunny-img{
+
+    width:65px;
+
+    position:absolute;
+
+    bottom:0;
+
+    transition:1s ease;
+}
+
+
+.b-left{
+    left:80px;
+}
+
+.b-right{
+    right:80px;
+}
+
+
+.kissing .b-left{
+
+    left:105px;
+
+    transform:
+    rotate(8deg);
+}
+
+
+.kissing .b-right{
+
+    right:105px;
+
+    transform:
+    rotate(-8deg);
+}
+
+
+/* CORAZONES */
+
+.hearts-container{
+
+    position:absolute;
+
+    top:-20px;
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+}
+
+
+.kiss-heart{
+
+    position:absolute;
+
+    width:24px;
+
+    opacity:0;
+}
+
+
+.kissing .h1{
+    animation:heartUp 1.5s ease forwards;
+}
+
+.kissing .h2{
+    animation:heartUp 1.5s ease forwards 0.2s;
+}
+
+.kissing .h3{
+    animation:heartUp 1.5s ease forwards 0.4s;
+}
+
+
+@keyframes heartUp{
+
+    0%{
+        opacity:0;
+        transform:translateY(0) scale(0.5);
+    }
+
+    30%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:0;
+        transform:translateY(-70px) scale(1.2);
+    }
+
+}
+
+
+/* ========================= */
+/*      NUESTRA LUNA         */
+/* ========================= */
+
+.top-bunnies{
+
+    position:absolute;
+
+    top:-65px;
+
+    z-index:5;
+
+    width:240px;
+
+    height:90px;
+
+    overflow:visible;
+
+    left:50%;
+
+    transform:translateX(-50%);
+}
+
+
+/* CONEJOS ARRIBA */
+
+.top-bunny{
+
+    width:55px;
+
+    position:absolute;
+
+    bottom:0;
+}
+
+
+/* IZQUIERDO */
+
+.left-top{
+
+    left:0;
+
+    animation:leftKiss 6s infinite ease-in-out;
+}
+
+
+/* DERECHO */
+
+.right-top{
+
+    right:0;
+
+    animation:rightKiss 6s infinite ease-in-out;
+}
+
+
+/* MOVIMIENTO */
+
+@keyframes leftKiss{
+
+    0%,100%{
+
+        left:0;
+    }
+
+    50%{
+
+        left:70px;
+    }
+
+}
+
+
+@keyframes rightKiss{
+
+    0%,100%{
+
+        right:0;
+    }
+
+    50%{
+
+        right:70px;
+    }
+
+}
+
+
+/* BURBUJAS */
+
+.top-bunnies::before{
+
+    content:"T amo Karencita";
+
+    position:absolute;
+
+    left:-55px;
+
+    top:-30px;
+
+    background:white;
+
+    color:#ff77b7;
+
+    padding:6px 12px;
+
+    border-radius:20px;
+
+    font-size:0.75rem;
+
+    font-weight:bold;
+
+    opacity:0;
+
+    white-space:nowrap;
+
+    animation:showBubble 6s infinite;
+
+    box-shadow:
+    0 0 12px rgba(255,255,255,0.5);
+}
+
+
+/* BURBUJA DERECHA */
+
+.top-bunnies::after{
+
+    content:"T amo Aukinsito";
+
+    position:absolute;
+
+    right:-55px;
+
+    top:-30px;
+
+    background:white;
+
+    color:#ff77b7;
+
+    padding:6px 12px;
+
+    border-radius:20px;
+
+    font-size:0.75rem;
+
+    font-weight:bold;
+
+    opacity:0;
+
+    white-space:nowrap;
+
+    animation:showBubble 6s infinite;
+
+    box-shadow:
+    0 0 12px rgba(255,255,255,0.5);
+}
+
+
+/* APARECER */
+
+@keyframes showBubble{
+
+    0%,35%,100%{
+
+        opacity:0;
+    }
+
+    45%,60%{
+
+        opacity:1;
+    }
+
+}
+
+
+/* LLUVIA */
+
+.rain-item{
+
+    position:absolute;
+
+    top:-20px;
+
+    color:white;
+
+    animation:fallSpecial 5s linear forwards;
+
+    pointer-events:none;
+}
+
+
+@keyframes fallSpecial{
+
+    from{
+
+        transform:
+        translateY(-10vh);
+
+        opacity:1;
+    }
+
+    to{
+
+        transform:
+        translateY(120vh);
+
+        opacity:0;
+    }
+
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:480px){
+
+    .moon-img{
+        width:210px;
+    }
+
+    .moon-phrase{
+        width:280px;
+        font-size:0.9rem;
+    }
+
+    .card-wrapper{
+        width:92%;
+    }
+
+}
